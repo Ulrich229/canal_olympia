@@ -1,3 +1,6 @@
+import 'package:canal_olympia/data/models/movie.dart';
+import 'package:canal_olympia/presentation/screens/home/widgets/appbar_choice_buton.dart';
+import 'package:canal_olympia/presentation/screens/home/widgets/movies_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -91,50 +94,45 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 2.h),
               const MovieCarrousel(),
               SizedBox(
-                height: 100.h,
+                height: 2.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Semaine du 17 - 23 Oct",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        Image.asset(
+                          "assets/icons/Search.png",
+                          height: 3.h,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    MoviesGrid()
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class AppBarChoiceButton extends StatelessWidget {
-  final String iconPath;
-  final String label;
-  final VoidCallback onTap;
-  const AppBarChoiceButton({
-    Key? key,
-    required this.iconPath,
-    required this.label,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            iconPath,
-            height: kTextTabBarHeight / 2.3,
-          ),
-          SizedBox(
-            width: 1.w,
-          ),
-          Text(
-            label,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
       ),
     );
   }

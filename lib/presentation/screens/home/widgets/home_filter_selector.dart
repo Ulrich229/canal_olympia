@@ -52,7 +52,7 @@ class HomeFIlterItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(right: 4.w),
+        margin: EdgeInsets.only(right: 2.w),
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(
           vertical: 1,
