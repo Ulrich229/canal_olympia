@@ -18,12 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: "Sora",
           colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromRGBO(
-              16,
-              86,
-              196,
-              1,
-            ),
+            seedColor: const Color.fromARGB(255, 10, 20, 69),
           ),
           useMaterial3: true,
         ),
