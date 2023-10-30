@@ -1,6 +1,9 @@
-import 'package:canal_olympia/presentation/screens/home/home_screen.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:canal_olympia/presentation/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import 'package:canal_olympia/presentation/screens/home/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static const routeName = '/onboarding';
@@ -38,39 +41,11 @@ class OnboardingScreen extends StatelessWidget {
               const Spacer(
                 flex: 7,
               ),
-              GestureDetector(
+              DefaultButton(
+                label: "Commencez",
                 onTap: () {
                   Navigator.of(context).pushNamed(HomeScreen.routeName);
                 },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(vertical: 1.2.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 255, 17, 75),
-                          Color.fromARGB(255, 188, 0, 46),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Commencez",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.sp,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
               ),
               const Spacer(
                 flex: 2,

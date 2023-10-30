@@ -4,7 +4,7 @@ import 'package:canal_olympia/presentation/screens/home/widgets/movies_grid.dart
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:canal_olympia/presentation/screens/home/widgets/blur_app_bar.dart';
+import 'package:canal_olympia/presentation/widgets/blur_app_bar.dart';
 import 'package:canal_olympia/presentation/screens/home/widgets/home_filter_selector.dart';
 import 'package:canal_olympia/presentation/screens/home/widgets/movie_carrousel.dart';
 

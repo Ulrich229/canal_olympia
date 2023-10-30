@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 10, 20, 69),
           ),
-          useMaterial3: true,
         ),
         onGenerateRoute: (settings) => onGenerateRoute(settings),
       );

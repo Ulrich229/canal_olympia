@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:canal_olympia/data/models/movie.dart';
+import 'package:canal_olympia/presentation/screens/movie_details/movie_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -50,100 +51,108 @@ class MoviesGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 12.w),
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    movie.corver,
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          MovieDetailsScreen.routeName,
+          arguments: movie,
+        );
+      },
+      child: SizedBox(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 12.w),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      movie.corver,
+                    ),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, -5),
+                      blurRadius: 35,
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                    BoxShadow(
+                      offset: const Offset(-5, 0),
+                      blurRadius: 35,
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                    BoxShadow(
+                      offset: const Offset(-5, -5),
+                      blurRadius: 35,
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                  ],
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, -5),
-                    blurRadius: 35,
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                  BoxShadow(
-                    offset: const Offset(-5, 0),
-                    blurRadius: 35,
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                  BoxShadow(
-                    offset: const Offset(-5, -5),
-                    blurRadius: 35,
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                ],
               ),
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Container(
-                  alignment: Alignment.topRight,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                        image: AssetImage(
-                          movie.corver,
-                        ),
-                        fit: BoxFit.cover),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 2.w,
-                  ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
                   child: Container(
+                    alignment: Alignment.topRight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                          image: AssetImage(
+                            movie.corver,
+                          ),
+                          fit: BoxFit.cover),
+                    ),
                     padding: EdgeInsets.symmetric(
                       horizontal: 2.w,
-                      vertical: 0.5.h,
+                      vertical: 2.w,
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: const Color.fromARGB(255, 188, 0, 46),
-                    ),
-                    child: Text(
-                      getDurationString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8.sp,
-                        fontWeight: FontWeight.bold,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 2.w,
+                        vertical: 0.5.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: const Color.fromARGB(255, 188, 0, 46),
+                      ),
+                      child: Text(
+                        getDurationString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 1.h),
-              Text(
-                movie.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                SizedBox(height: 1.h),
+                Text(
+                  movie.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                movie.category,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  color: Colors.grey,
+                Text(
+                  movie.category,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 10.sp,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

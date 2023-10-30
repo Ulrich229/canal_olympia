@@ -5,12 +5,15 @@ import 'package:sizer/sizer.dart';
 
 class BlurAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget content;
+  final Widget? bottom;
   const BlurAppBar({
     Key? key,
     required this.content,
+    this.bottom,
   }) : super(key: key);
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(bottom == null ? kToolbarHeight : kToolbarHeight * 2);
 
   @override
   State<BlurAppBar> createState() => _BlurAppBarState();
@@ -77,9 +80,20 @@ class _BlurAppBarState extends State<BlurAppBar> {
         32,
         128,
       ),
-      child: widget.content,
+      child: Column(
+        children: [
+          Expanded(
+            child: widget.content,
+          ),
+          if (widget.bottom != null)
+            Expanded(
+              child: Row(
+                children: [Expanded(child: widget.bottom!)],
+              ),
+            ),
+        ],
+      ),
     );
-
     if (_scrolledUnder) {
       appBarChild = ClipRect(
         child: BackdropFilter(
